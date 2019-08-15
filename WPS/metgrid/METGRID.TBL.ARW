@@ -120,10 +120,10 @@ name=SNOW
 ========================================
 name=SKINTEMP
         interp_option=sixteen_pt+four_pt+wt_average_4pt+wt_average_16pt+search
-        masked=both
-        interp_land_mask  = LANDSEA(1)
-        interp_water_mask = LANDSEA(0)
+        masked=water
+        interp_mask  = LANDMASK(0)
         fill_missing=0.
+        missing_value=-1.E30
 ========================================
 name=PSFC
         interp_option=four_pt+average_4pt
@@ -529,10 +529,12 @@ name=VV
         fill_lev=200100:const(-1.E30)
 ========================================
 name=SST
-        interp_option=sixteen_pt+four_pt
+        interp_option=sixteen_pt+four_pt+wt_average_4pt+wt_average_16pt+search
         fill_missing=0.
         missing_value=-1.E30
         flag_in_output=FLAG_SST
+        masked=land
+        interp_mask=LANDMASK(1)
 ========================================
 name=QV
         interp_option=four_pt+average_4pt
