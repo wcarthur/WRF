@@ -764,7 +764,7 @@ CONTAINS
       endif
    END IF
 
-   CALL wrf_debug (1, 'Top of Radiation Driver')
+   CALL wrf_debug (100, 'Top of Radiation Driver')
 !  WRITE ( wrf_err_message , * ) 'itimestep = ',itimestep,', dt = ',dt,', lw and sw options = ',lw_physics,sw_physics
 !  CALL wrf_debug (1, wrf_err_message )
    if (lw_physics .eq. 0 .and. sw_physics .eq. 0)         return
@@ -1122,7 +1122,7 @@ CONTAINS
      IF ( F_QC .OR. F_QI ) THEN
 ! Call to cloud fraction routine based on Randall 1994 (Hong Pan 1998)
 
-        CALL wrf_debug (1, 'CALL cldfra1')
+        CALL wrf_debug (100, 'CALL cldfra1')
         CALL cal_cldfra1(CLDFRA,qv,qc,qi,qs,               &
                    F_QV,F_QC,F_QI,F_QS,t,p,                &
                    F_ICE_PHY,F_RAIN_PHY,                   &
@@ -1134,7 +1134,7 @@ CONTAINS
         IF ( PRESENT ( CLDFRA_DP ) ) THEN
 ! this is for Kain-Fritsch scheme
           IF ( icloud_cu .EQ. 2 ) THEN
-             CALL wrf_debug (1, 'use kf cldfra')
+             CALL wrf_debug (100, 'use kf cldfra')
              DO j = jts,jte
              DO k = kts,kte
              DO i = its,ite
@@ -1152,7 +1152,7 @@ CONTAINS
 
         IF ( PRESENT ( CLDFRA_BL ) .AND.  PRESENT ( QC_BL ) ) THEN
            IF ( icloud_bl > 0 ) THEN
-           CALL wrf_debug (1, 'in rad driver; use BL clouds')
+           CALL wrf_debug (100, 'in rad driver; use BL clouds')
            DO j = jts,jte
            DO i = its,ite
            DO k = kts,kte
@@ -1176,7 +1176,7 @@ CONTAINS
         IF ( PRESENT (cldfra_mp_all) ) THEN
           IF (is_CAMMGMP_used) THEN
             !BSINGH: cloud fraction from CAMMGMP is being used (Mods by Po-Lun)
-        CALL wrf_debug (1, 'use cammgmp')
+        CALL wrf_debug (100, 'use cammgmp')
             IF (itimestep .NE. 1) THEN
                DO j=jts,jte
                DO k=kts,kte
@@ -1194,7 +1194,7 @@ CONTAINS
      ELSE IF ( ICLOUD == 2 ) THEN
 
      IF ( F_QC .OR. F_QI ) THEN
-       CALL wrf_debug (1, 'CALL cldfra2')
+       CALL wrf_debug (100, 'CALL cldfra2')
        CALL cal_cldfra2(CLDFRA,qc,qi,F_QC,F_QI,              &
                        ids,ide, jds,jde, kds,kde,            &
                        ims,ime, jms,jme, kms,kme,            &
