@@ -3,6 +3,12 @@
 *.o
 *.mod
 *.exe
+*.f90
+*.a 
+
+# gadi job script files
+#######################
+**/*.o[0-9]*
 
 # WRF/WPS temporary files
 #########################
@@ -40,3 +46,4 @@ WRFV3/test/em_real/wrfinput*
 WRFV3/test/em_real/wrfout*
 WRFV3/tools/fseeko64_test
 WRFV3/tools/fseeko_test
+WPS/configure.wps
